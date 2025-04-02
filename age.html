@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input, button { margin: 10px; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h2>Age Calculator</h2>
+    <label for="birthdate">Enter your birthdate:</label>
+    <input type="date" id="birthdate">
+    <button onclick="calculateAge()">Calculate Age</button>
+    <p id="result"></p>
+    <p id="yearDifference"></p>
+
+    <script>
+        function calculateAge() {
+            let birthdate = document.getElementById("birthdate").value;
+            if (!birthdate) {
+                document.getElementById("result").innerText = "Please select a birthdate.";
+                document.getElementById("yearDifference").innerText = "";
+                return;
+            }
+            let birthDateObj = new Date(birthdate);
+            let today = new Date();
+            let age = today.getFullYear() - birthDateObj.getFullYear();
+            let monthDiff = today.getMonth() - birthDateObj.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+                age--;
+            }
+            
+            let yearDifference = today.getFullYear() - birthDateObj.getFullYear();
+            
+            document.getElementById("result").innerText = "Your age is: " + age;
+            document.getElementById("yearDifference").innerText = "Current Year - Birth Year: " + yearDifference;
+        }
+    </script>
+</body>
+</html>
