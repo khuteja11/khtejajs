@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JavaScript Dates and Regex</title>
+</head>
+<body>
+  <h1>JavaScript Dates and Regex</h1>
+  <button type="button" onclick="myfunc()">Click</button>
+
+  <script>
+    function myfunc() {
+      // Specific date and time
+      const specificDate = new Date('2023-10-01T10:00:00Z');
+      console.log("Specific Date:", specificDate);
+
+      // Accessing current date and time
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth() + 1; // Months are 0-based
+      const day = currentDate.getDate();
+      const hour = currentDate.getHours();
+      const minute = currentDate.getMinutes();
+      const second = currentDate.getSeconds();
+
+      // Format date to string
+      const formattedDate = currentDate.toLocaleDateString('en-US');
+      console.log("Present date and time:", currentDate);
+      console.log("Formatted present date:", formattedDate);
+      console.log(`Year: ${year}, Month: ${month}, Day: ${day}, Hour: ${hour}, Minute: ${minute}, Second: ${second}`);
+
+      // Compare two dates
+      const date1 = new Date('2025-02-15');
+      const date2 = new Date('2025-02-15');
+      if (date1 < date2) {
+        console.log("date1 is earlier than date2");
+      } else if (date1 > date2) {
+        console.log("date1 is later than date2");
+      } else {
+        console.log("date1 and date2 are equal");
+      }
+
+      // Regex Examples
+
+      // 1. Match the word "cat"
+      const pattern1 = /cat/;
+      const sentence1 = "I have two pets: dogs and cat.";
+      console.log("Contains 'cat':", pattern1.test(sentence1));
+
+      // 2. Match words starting with 'C' or 'c'
+      const pattern2 = /\b[cC]\w+/g;
+      const sentence2 = "Cat and dog are animals. Cow is also an animal.";
+      console.log("Words starting with 'C' or 'c':", sentence2.match(pattern2));
+
+      // 3. Email validation
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const email = "myaccount@gmail.com";
+      console.log("Valid email:", emailPattern.test(email));
+    }
+  </script>
+</body>
+</html>
